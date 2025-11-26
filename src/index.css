@@ -5,3 +5,9 @@
 body {
   font-family: sans-serif;
 }
+
+.hyphens-auto {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}

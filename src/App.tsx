@@ -79,13 +79,15 @@ export default function App() {
               key={task.id}
               className="flex items-center justify-between p-2 border rounded-lg"
             >
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={task.completed}
-                  onChange={() => toggleComplete(task.id)}
-                />
-                {editingId === task.id ? (
+              {editingId === task.id ? (
+                // ------- EDITING MODE -------
+                <div className="flex items-center gap-2 w-full">
+                  <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => toggleComplete(task.id)}
+                  />
+
                   <input
                     value={editValue}
                     onChange={e => setEditValue(e.target.value)}
@@ -93,43 +95,63 @@ export default function App() {
                       if (e.key === "Enter") saveEdit();
                       if (e.key === "Escape") setEditingId(null);
                     }}
-                    className="border rounded px-2 py-1"
+                    className="border rounded px-2 py-1 flex-1 min-w-0"
                     autoFocus
                   />
-                ) : (
-                  <span
-                    className={`${
-                      task.completed ? "line-through text-gray-400" : ""
-                    }`}
-                  >
-                    {task.text}
-                  </span>
-                )}
-              </div>
-              <div className="flex gap-2">
-                {editingId === task.id ? (
+
                   <button
                     onClick={saveEdit}
-                    className="text-green-500 hover:text-green-700"
+                    className="text-green-500 hover:text-green-700 whitespace-nowrap"
                   >
                     Save
                   </button>
-                ) : (
+
                   <button
-                    onClick={() => startEditing(task.id, task.text)}
-                    className="text-yellow-500 hover:text-yellow-700"
+                    onClick={() => setEditingId(null)}
+                    className="text-red-500 hover:text-red-700 text-lg"
                   >
-                    Edit
+                    ✕
                   </button>
-                )}
-                <button
-                  onClick={() => deleteTask(task.id)}
-                  className="text-red-500 hover:text-red-700"
-                >
-                  ✕
-                </button>
-              </div>
+                </div>
+              ) : (
+                // ------- NORMAL MODE -------
+                <>
+                  <div className="flex items-start gap-2 flex-1 min-w-0">
+                    <input
+                      type="checkbox"
+                      checked={task.completed}
+                      onChange={() => toggleComplete(task.id)}
+                      className="mt-1"
+                    />
+
+                    <span
+                      className={`break-words whitespace-normal hyphens-auto ${task.completed ? "line-through text-gray-400" : ""
+                        }`}
+                    >
+                      {task.text}
+                    </span>
+
+                  </div>
+
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => startEditing(task.id, task.text)}
+                      className="text-yellow-500 hover:text-yellow-700"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => deleteTask(task.id)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </>
+              )}
             </li>
+
           ))}
         </ul>
 
