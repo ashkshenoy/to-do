@@ -19,7 +19,7 @@ git clone <repo-url>
 cd todo-app
 npm install
 npm run dev
-
+```
 
 hosted on - https://todo-app-five-alpha-22.vercel.app/
 
