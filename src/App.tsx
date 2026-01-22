@@ -149,19 +149,25 @@ export default function App() {
         </ul>
 
         {/* Bottom Bar */}
-        {tasks.length > 0 && (
-          <div className="flex justify-between items-center mt-8 px-2 text-sm">
-            <span className="text-slate-400 font-medium">
-              <strong className="text-slate-900">{tasks.filter(t => !t.completed).length}</strong> left
-            </span>
-            <button
-              onClick={clearCompleted}
-              className="text-slate-400 hover:text-red-500 font-medium transition-colors"
-            >
-              Clear Completed
-            </button>
-          </div>
-        )}
+        {/* Bottom Bar */}
+{tasks.length > 0 && (
+  <div className="flex justify-between items-center mt-8 px-2 text-sm">
+    <span className="text-slate-400 font-medium">
+      <strong className="text-slate-900">
+        {tasks.filter(t => !t.completed).length}
+      </strong> 
+      {/* Pluralization Logic */}
+      {tasks.filter(t => !t.completed).length === 1 ? " item " : " items "} 
+      left
+    </span>
+    <button
+      onClick={clearCompleted}
+      className="text-slate-400 hover:text-red-500 font-medium transition-colors"
+    >
+      Clear Completed
+    </button>
+  </div>
+)}
       </div>
     </div>
   );
