@@ -23,6 +23,5 @@ npm run dev
 
 hosted on - https://todo-app-five-alpha-22.vercel.app/
 
-<img width="1196" height="943" alt="image" src="https://github.com/user-attachments/assets/65af9e86-31d8-42e7-9c07-10ff0ea3dbb5" />
-
+<img width="1507" height="902" alt="image" src="https://github.com/user-attachments/assets/acbb1fa2-5553-4cea-8fbd-45b045dde16c" />
 
